@@ -1,0 +1,69 @@
+<form [formGroup]="usuarioForm" autocomplete="off">
+
+    
+  <div class="form-group">
+    <label>Nombre</label>
+
+    <input class="form-control"
+           type="text"
+           formControlName="nombre"
+           [class.is-invalid]="nombreNoValido">
+
+    <small *ngIf="nombreNoValido" class="text-danger">
+      Nombre vacio
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Correo</label>
+
+    <input class="form-control"
+           type="text"
+           formControlName="correo"
+           [class.is-invalid]="correoNoValido">
+
+    <small *ngIf="correoNoValido" class="text-danger">
+      Correo vacio o invalido
+    </small>
+  </div>
+
+  <div class="form-group">
+    <label>Telefono</label>
+
+    <input class="form-control"
+           type="text"
+           formControlName="telefono"
+           [class.is-invalid]="telefonoNoValido">
+
+    <small *ngIf="telefonoNoValido" class="text-danger">
+      Telefono no valido
+    </small>
+  </div>
+
+
+  <div class="input-group mb-3">
+    <div class="input-group-prepend">
+      <label class="input-group-text">Codigo Distribuidor</label>
+    </div>
+    <select class="custom-select" 
+            formControlName="distribuidorControl"
+            [class.is-invalid]="nombreNoValido">
+      <option selected> Escoja una opcion </option>
+      <option *ngFor="let distribuidor of distribuidores" 
+              [value]="distribuidor.codigo"> 
+              {{ distribuidor.codigo }} -- {{ distribuidor.nombre }} 
+      </option>
+    </select>
+
+    <small *ngIf="distribuidorNoValido" class="text-danger">
+      Codigo vacio
+    </small>
+
+  </div>
+
+    <button type="submit" class="btn btn-warning" *ngIf="usuarioUpdate" (click)="editar()">Editar</button>
+    <button type="submit" class="btn btn-primary" *ngIf="!usuarioUpdate" (click)="guardar()">Guardar</button>
+    <button type="button" class="btn btn-info text-right ml-2" *ngIf="usuarioUpdate" (click)="cancelar()">Cancelar</button>
+  </form>
+
+<app-table-usuarios  (codigoSeleccionado)="editarUsuario($event)" [usuarios]="usuario" *ngIf="usuario.length > 0"></app-table-usuarios>

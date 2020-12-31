@@ -1,0 +1,18 @@
+<table class="table table-striped table-dark mt-5">
+  <thead>
+    <tr>
+      <th scope="col">Codigo</th>
+      <th scope="col">Nombre</th>
+      <th scope="col">Codigo de Distribuidor</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let canal of canales">
+      <th scope="row">{{ canal.codigo }}</th>
+      <td> {{ canal.nombre }} </td>
+      <td>  {{ canal.distribuidorCodigo }} </td>
+      <td><i class="bi bi-pen btn btn-primary" (click)="editar(canal)"></i></td>
+      <td> <button class="btn btn-danger" (click)="borrar(canal.codigo)"><i class="bi bi-trash"></i></button></td>
+    </tr>
+  </tbody>
+</table>

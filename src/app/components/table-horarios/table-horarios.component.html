@@ -1,0 +1,20 @@
+<table class="table table-striped table-dark mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Inicio</th>
+        <th scope="col">Finalizacion</th>
+        <th scope="col">Codigo de Distribuidor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let horario of horarios">
+        <th scope="row">{{ horario.codigo }}</th>
+        <td> {{ horario.start }} </td>
+        <td> {{ horario.end }} </td>
+        <td> {{ horario.distribuidorCodigo }} </td>
+        <td><i class="bi bi-pen btn btn-primary" (click)="editar(horario)"></i></td>
+        <td><i class="bi bi-trash btn btn-danger" (click)="eliminar(horario.codigo)"></i></td>
+      </tr>
+    </tbody>
+  </table>

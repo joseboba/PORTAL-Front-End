@@ -1,0 +1,44 @@
+<form [formGroup]="canalForm" autocomplete="off">
+
+    <div class="form-group">
+      <label>Nombre</label>
+
+      <input class="form-control"
+             type="text"
+             formControlName="nombre"
+             placeholder="Nombre"
+             [class.is-invalid]="nombreNoValido">
+
+      <small *ngIf="nombreNoValido" class="text-danger">
+        Nombre vacio
+      </small>
+    </div>
+
+
+    <div class="input-group mb-3">
+      <div class="input-group-prepend">
+        <label class="input-group-text">Codigo Distribuidor</label>
+      </div>
+      <select class="custom-select" 
+              formControlName="distribuidorControl"
+              [class.is-invalid]="distribuidorNoValido">
+        <option selected> Escoja una opcion </option>
+        <option *ngFor="let distribuidor of distribuidores" 
+                [value]="distribuidor.codigo"> 
+                {{ distribuidor.codigo }} -- {{ distribuidor.nombre }} 
+        </option>
+      </select>
+
+      <small *ngIf="distribuidorNoValido" class="text-danger">
+        Codigo vacio
+      </small>
+
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-warning" *ngIf="canalUpdate" (click)="editar()">Editar</button>
+    <button type="submit" class="btn btn-primary" *ngIf="!canalUpdate"  (click)="guardar()">Guardar</button>
+  </form>
+
+<app-table-canales [canales]="canal" (codigoSeleccionado)="editarCanal($event)" *ngIf="canal.length > 0"></app-table-canales>

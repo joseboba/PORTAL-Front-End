@@ -1,0 +1,24 @@
+<div *ngIf="option !== 'Horarios'">
+    <div class="card text-white bg-dark mb-3"  *ngFor="let data of datas">
+        <div class="card-header">{{ option}}</div>
+        <div class="card-body">
+          <h2 class="card-title text-center"> Codigo - {{ data.codigo }} </h2>
+          <p class="card-text text-center" *ngIf="data.nombre"> Nombre - {{ data.nombre }} </p>
+          <p class="card-text text-center" *ngIf="!data.nombre"> Descripcion - {{ data.descripcion }} </p>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="option === 'Horarios'" >
+    <div class="card text-white bg-dark mb-3" *ngFor="let data of datas">
+        <div class="card-header">Horarios</div>
+        <div class="card-body">
+          <h2 class="card-title text-center">Codigo - {{ data.codigo }}</h2>
+          <p class="card-text text-center"> Hora de inicio - {{ data.start }} </p>
+          <p class="card-text text-center"> Hora de inicio - {{ data.end }} </p>
+        </div>
+      </div>
+</div>
+
+

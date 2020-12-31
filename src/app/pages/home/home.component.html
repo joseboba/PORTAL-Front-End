@@ -1,0 +1,23 @@
+<form class=" my-2 my-lg-0 text-right" [formGroup]="searchForm">
+
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" formControlName="search" [class.is-invalid]="searchNoValido">
+    
+    <select class="custom-select mt-2" 
+            formControlName="option"
+            [class.is-invalid]="optionNoValido"
+            placeholder="Escoja una opcion de busqueda"
+    >
+        <option *ngFor="let opcion of optionsComponent" 
+                [value]="opcion"> 
+            {{ opcion }}
+        </option>
+    </select>
+ 
+
+    <button class="btn btn-outline-danger mt-2 btn-lg" type="submit" (click)="search()">Search</button>
+  </form>
+
+
+<div class="m-5">
+    <app-cards [datas]="result" [option]="option"></app-cards>
+</div>

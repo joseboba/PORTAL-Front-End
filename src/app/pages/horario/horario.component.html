@@ -1,0 +1,73 @@
+<form [formGroup]="horarioForm">
+    
+    <div class="form-group">
+        <label>Hora de inicio</label>
+  
+        <input class="form-control"
+               type="text"
+               formControlName="start"
+               placeholder="Ingrese horario de inicio"
+               [ngxTimepicker]="pickerStart"
+               [format]="12"
+               [min]="horarioStartMin"
+               [class.is-invalid]="horarioStartNoValido">
+        
+        <ngx-material-timepicker #pickerStart>
+        </ngx-material-timepicker>
+       
+  
+        <small *ngIf="horarioStartNoValido" class="text-danger">
+          Horario de inicio vacio
+        </small>
+      </div>
+
+      <div class="form-group">
+        <label>Hora de finalizacion</label>
+  
+        <input class="form-control"
+               type="text"
+               formControlName="end"
+               placeholder="Ingrese horario de finalizacion"
+               [ngxTimepicker]="pickerEnd"
+               [format]="12"
+               [min]="horarioEndMin"
+               [value]="horarioForm.value.end"
+               [class.is-invalid]="horarioEndNoValido">
+        
+        <ngx-material-timepicker #pickerEnd></ngx-material-timepicker>
+       
+  
+        <small *ngIf="horarioEndNoValido" class="text-danger">
+          Horario de finalizacion vacio
+        </small>
+      </div>
+
+
+
+    <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text">Codigo Distribuidor</label>
+        </div>
+        <select class="custom-select" 
+                formControlName="distribuidorControl"
+                [class.is-invalid]="distribuidorNoValido">
+          <option selected> Escoja una opcion </option>
+          <option *ngFor="let distribuidor of distribuidores" 
+                  [value]="distribuidor.codigo"> 
+                  {{ distribuidor.codigo }} -- {{ distribuidor.nombre }} 
+          </option>
+        </select>
+  
+        <small *ngIf="distribuidorNoValido" class="text-danger">
+          Codigo vacio
+        </small>
+  
+      </div>
+    
+    <button type="submit" class="btn btn-warning" *ngIf="horarioUpdate" (click)="editar()">Editar</button>
+    <button type="submit" class="btn btn-primary" *ngIf="!horarioUpdate"  (click)="guardar()">Guardar</button>
+
+</form>
+
+
+<app-table-horarios [horarios]="horario" (codigoSeleccionado)="editarHorario($event)" *ngIf="horario.length > 0" ></app-table-horarios>

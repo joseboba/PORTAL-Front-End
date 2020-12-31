@@ -1,0 +1,20 @@
+<table class="table table-striped table-dark mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo de Notificación</th>
+        <th scope="col">Correo de Alertas</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let distribuidor of distriubidores">
+        <th scope="row">{{ distribuidor.codigo }}</th>
+        <td>{{ distribuidor.nombre }}</td>
+        <td>{{ distribuidor.correoNotificacion }}</td>
+        <td>{{ distribuidor.correoAlertas }}</td>
+        <td><i class="bi bi-pen btn btn-primary" (click)="editar(distribuidor)"></i></td>
+        <td><button class="btn btn-danger" (click)="borrar(distribuidor.codigo)"><i class="bi bi-trash"></i></button></td>
+      </tr>
+    </tbody>
+  </table>

@@ -1,0 +1,51 @@
+<form [formGroup]="distribuidorForm" autocomplete="off">
+
+    <div class="form-group">
+        <label>Nombre</label>
+  
+        <input class="form-control"
+               type="text"
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido">
+  
+        <small *ngIf="nombreNoValido" class="text-danger">
+          Nombre vacio
+        </small>
+      </div>
+  
+
+      <div class="form-group">
+        <label>Correo de Notificacion</label>
+  
+        <input class="form-control"
+               type="email"
+               formControlName="correoNotificacion"
+               [class.is-invalid]="correoNotificacionNoValido">
+  
+        <small *ngIf="correoNotificacionNoValido" class="text-danger">
+          Correo invalido
+        </small>
+      </div>
+  
+
+      <div class="form-group">
+        <label>Correo de Alertas</label>
+  
+        <input class="form-control"
+               type="email"
+               formControlName="correoAlerta"
+               
+               [class.is-invalid]="correoAlertaNoValido">
+  
+        <small *ngIf="correoAlertaNoValido" class="text-danger">
+          Correo invalido
+        </small>
+      </div>
+    
+    <button type="submit" class="btn btn-warning m-2" (click)="editar()" *ngIf="distribuidorUpdate">Editar</button>
+    <button type="submit" class="btn btn-primary m-2" (click)="guardar()" *ngIf="!distribuidorUpdate">Guardar</button>
+</form>
+
+
+<!-- <app-table-horarios></app-table-horarios> -->
+<app-table-distribuidores (codigoSeleccionado)="editarDistribuidor($event)" [distriubidores]="distribuidor" *ngIf="distribuidor.length > 0"></app-table-distribuidores>

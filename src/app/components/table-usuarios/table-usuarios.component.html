@@ -1,0 +1,22 @@
+<table class="table table-striped table-dark mt-5">
+    <thead>
+      <tr>
+        <th scope="col">Codigo</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Correo</th>
+        <th scope="col">Telefono</th>
+        <th scope="col">Codigo de Distribuidor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usuario of usuarios">
+        <th scope="row">{{ usuario.codigo }}</th>
+        <td>{{usuario.nombre}}</td>
+        <td> {{ usuario.correo }} </td>
+        <td> {{ usuario.telefono }} </td>
+        <td> {{ usuario.distribuidorCodigo }} </td>
+        <td><i class="bi bi-pen btn btn-primary" (click)="editar(usuario)"></i></td>
+        <td><i class="bi bi-trash btn btn-danger" (click)="borrar(usuario.codigo)"></i></td>
+      </tr>
+    </tbody>
+  </table>
