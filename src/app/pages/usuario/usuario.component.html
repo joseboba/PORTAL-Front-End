@@ -1,4 +1,4 @@
-<form [formGroup]="usuarioForm" autocomplete="off">
+<form [formGroup]="usuarioForm" autocomplete="off" *ngIf="distribuidores.length > 0">
 
     
   <div class="form-group">
@@ -65,5 +65,12 @@
     <button type="submit" class="btn btn-primary" *ngIf="!usuarioUpdate" (click)="guardar()">Guardar</button>
     <button type="button" class="btn btn-info text-right ml-2" *ngIf="usuarioUpdate" (click)="cancelar()">Cancelar</button>
   </form>
+
+<div class="alert alert-danger" role="alert" *ngIf="distribuidores.length <=0">
+    <h2 class="alert-heading">No puede registrar usuarios</h2>
+    <p>No hay ningun distribuidor al que puedas asociar tu usuario</p>
+    <hr>
+    <p class="mb-0">En la pestaña de distribuidor puedes crear nuevos distribuidores para asociar tu usuario</p>
+</div>
 
 <app-table-usuarios  (codigoSeleccionado)="editarUsuario($event)" [usuarios]="usuario" *ngIf="usuario.length > 0"></app-table-usuarios>

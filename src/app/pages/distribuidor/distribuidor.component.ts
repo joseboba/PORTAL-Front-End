@@ -162,4 +162,9 @@ export class DistribuidorComponent implements OnInit {
 
   }
 
+  cancelar(){
+    this.distribuidorForm.reset();
+    this.distribuidorUpdate = null;
+  }
+
 }

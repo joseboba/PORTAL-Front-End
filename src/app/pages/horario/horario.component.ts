@@ -157,4 +157,9 @@ export class HorarioComponent implements OnInit {
 
   }
 
+  cancelar(){
+    this.horarioUpdate = null;
+    this.horarioForm.reset();
+  }
+
 }

@@ -1,4 +1,4 @@
-<form [formGroup]="productoForm" autocomplete="off">
+<form [formGroup]="productoForm" autocomplete="off" *ngIf="distribuidores.length > 0">
 
   <div class="form-group">
     <label>Descripcion</label>
@@ -49,6 +49,15 @@
 
   <button type="submit" class="btn btn-warning" *ngIf="productoUpdate"  (click)="editar()">Editar</button>
   <button type="submit" class="btn btn-primary" *ngIf="!productoUpdate" (click)="guardar()">Guardar</button>
+  <button type="button" class="btn btn-info text-right ml-2" *ngIf="productoUpdate" (click)="cancelar()">Cancelar</button>
+
 </form>
+
+<div class="alert alert-danger" role="alert" *ngIf="distribuidores.length <=0">
+  <h2 class="alert-heading">No puede registrar productos</h2>
+  <p>No hay ningun distribuidor al que puedas asociar tu producto</p>
+  <hr>
+  <p class="mb-0">En la pestaña de distribuidor puedes crear nuevos distribuidores para asociar tu producto</p>
+</div>
 
 <app-table-productos *ngIf="producto.length > 0" (codigoSeleccionado)="editarProducto($event)"  [productos]="producto"></app-table-productos>

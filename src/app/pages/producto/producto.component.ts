@@ -139,8 +139,11 @@ export class ProductoComponent implements OnInit {
       this.serviceP.getAll().subscribe( data => this.producto = data );
       this.serviceD.getAll().subscribe( data => { this.distribuidores = data });
     }
+  }
 
-
+  cancelar(){
+    this.productoUpdate = null;
+    this.productoForm.reset();
   }
 
 }

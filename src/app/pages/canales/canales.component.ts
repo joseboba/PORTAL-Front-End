@@ -130,8 +130,10 @@ export class CanalesComponent implements OnInit {
       this.serveRest.getAll().subscribe( data  => this.canal = data)
       this.serviceDistribuidor.getAll().subscribe( data => this.distribuidores = data)
     }
-
-
   }
 
+  cancelar(){
+    this.canalUpdate = null;
+    this.canalForm.reset();
+  }
 }

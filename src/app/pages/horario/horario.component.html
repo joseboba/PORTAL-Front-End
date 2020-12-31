@@ -1,4 +1,4 @@
-<form [formGroup]="horarioForm">
+<form [formGroup]="horarioForm" *ngIf="distribuidores.length > 0">
     
     <div class="form-group">
         <label>Hora de inicio</label>
@@ -66,8 +66,17 @@
     
     <button type="submit" class="btn btn-warning" *ngIf="horarioUpdate" (click)="editar()">Editar</button>
     <button type="submit" class="btn btn-primary" *ngIf="!horarioUpdate"  (click)="guardar()">Guardar</button>
+    <button type="button" class="btn btn-info text-right ml-2" *ngIf="horarioUpdate" (click)="cancelar()">Cancelar</button>
+
 
 </form>
 
+
+<div class="alert alert-danger" role="alert" *ngIf="distribuidores.length <=0">
+  <h2 class="alert-heading">No puede registrar horarios</h2>
+  <p>No hay ningun distribuidor al que puedas asociar tu horario</p>
+  <hr>
+  <p class="mb-0">En la pestaña de distribuidor puedes crear nuevos distribuidores para asociar tu horario</p>
+</div>
 
 <app-table-horarios [horarios]="horario" (codigoSeleccionado)="editarHorario($event)" *ngIf="horario.length > 0" ></app-table-horarios>

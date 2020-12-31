@@ -44,8 +44,8 @@
     
     <button type="submit" class="btn btn-warning m-2" (click)="editar()" *ngIf="distribuidorUpdate">Editar</button>
     <button type="submit" class="btn btn-primary m-2" (click)="guardar()" *ngIf="!distribuidorUpdate">Guardar</button>
+    <button type="button" class="btn btn-info text-right ml-2" *ngIf="distribuidorUpdate" (click)="cancelar()">Cancelar</button>
 </form>
 
 
-<!-- <app-table-horarios></app-table-horarios> -->
 <app-table-distribuidores (codigoSeleccionado)="editarDistribuidor($event)" [distriubidores]="distribuidor" *ngIf="distribuidor.length > 0"></app-table-distribuidores>
